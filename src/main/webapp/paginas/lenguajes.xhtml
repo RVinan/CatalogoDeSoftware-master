@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Lenguajes</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/plantillas/plantillaAdmin.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <h:dataTable value="#{LenguajeControllador.lenguaje}" var="o">
+                        <h:column>
+                            <f:facet name="header">Nombre</f:facet>
+                            <h:inputText value="#{o.nombreLenguaje}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Framework</f:facet>
+                            <h:inputText value="#{o.framework}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Front End</f:facet>
+                            <h:inputText value="#{o.frontEnd}"/>
+                        </h:column>
+                          <h:column>
+                            <f:facet name="header">Guardar</f:facet>
+                            <h:commandButton value="Guardar" actionListener="#{LenguajeControllador.crear()}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+                <h:form>
+                     <h:dataTable value = "#{LenguajeControllador.lenguajes}" var = "o">
+                         <h:column>
+                             <f:facet name="header">Nombre</f:facet>
+                                 <h:outputText value="#{o.nombreLenguaje}" />
+                                    <h:inputText value="#{o.nombreLenguaje}" />
+                         </h:column>
+                             <h:column>
+                             <f:facet name="header">Framework</f:facet>
+                                 <h:outputText value="#{o.framework}" />
+                                 <h:inputText value="#{o.framework}" />
+                         </h:column>
+                           <h:column>
+                             <f:facet name="header">Front end</f:facet>
+                                 <h:outputText value="#{o.frontEnd}" />
+                                   <h:inputText value="#{o.frontEnd}" />
+                         </h:column>
+                         <h:column>
+                             <f:facet name="header">Editar</f:facet>
+                             <h:commandButton value="Editar" action="#{LenguajeControllador.editar()}" >
+                              <f:setPropertyActionListener 
+                                  target="#{LenguajeControllador.lenguaje}" 
+                                 value="#{o}" />
+                             </h:commandButton>
+                             <h:commandButton value="Eliminar" action="#{LenguajeControllador.eliminar()}" >
+                              <f:setPropertyActionListener 
+                                  target="#{LenguajeControllador.lenguaje}" 
+                                 value="#{o}" />
+                             </h:commandButton>
+                         </h:column>
+                     </h:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+        
+    </h:body>
+    
+</html>

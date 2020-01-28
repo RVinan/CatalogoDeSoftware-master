@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Dominio</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/plantillas/plantillaAdmin.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <h:dataTable value="#{ClasificacionControlador.clasificacion}" var="o">
+                        <h:column>
+                            <f:facet name="header">Nombre</f:facet>
+                            <h:inputText value="#{o.nombre}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+                <h:form>
+                     <h:dataTable value = "#{ClasificacionControlador.clasificacion}" var = "o">
+                         <h:column>
+                             <f:facet name="header">Nombre</f:facet>
+                                 <h:outputText value="#{o.nombre}" />
+                                    <h:inputText value="#{o.nombre}" />
+                         </h:column>
+                         <h:column>
+                             <f:facet name="header">Editar</f:facet>
+                             <h:commandButton value="Editar" action="#{ClasificacionControlador.editar()}" >
+                              <f:setPropertyActionListener 
+                                  target="#{ClasificacionControlador.clasificaciones}" 
+                                 value="#{o}" />
+                             </h:commandButton>
+                             <h:commandButton value="Eliminar" action="#{ClasificacionControlador.eliminar()}" >
+                              <f:setPropertyActionListener 
+                                  target="#{ClasificacionControlador.clasificacion}" 
+                                 value="#{o}" />
+                             </h:commandButton>
+                         </h:column>
+                     </h:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+        
+    </h:body>
+    
+</html>
